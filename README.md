@@ -80,7 +80,8 @@ alwaysInsertFields?: boolean;
 clientCacheKey?: string;
 
 /**
-* Do uploads directly on the client to bypass limits on Vercel. You must allow CORS PUT method for the bucket to your website.
+* Do uploads directly on the client to bypass 4.5 mb limits on Vercel. You must allow CORS PUT method for the bucket to your website.
+* As for now, this still couldn't be used
 */
 clientUploads?: ClientUploadsConfig;
 
