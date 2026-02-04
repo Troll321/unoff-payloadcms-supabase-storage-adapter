@@ -115,3 +115,4 @@ encodeName?: boolean;
 
 - clientUpload as for now is still error (it is presumed that the problem is on Payload)
 - Some feature from the original s3 storage might not exists here
+- Oh yeah, beside the working example (it is untested :v)
