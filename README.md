@@ -1,4 +1,4 @@
-# The unofficial payloadcms storage adapter
+# The unofficial payloadcms supabase storage adapter
 
 This is basically a stripped down version from @payloadcms/storage-s3 that uses @supabase/supabase-js. This is created due to the frustation in setting up s3 for supabase :V
 
