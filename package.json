@@ -1,0 +1,58 @@
+{
+    "name": "unoff-payloadcms-supabase-storage-adapter",
+    "version": "1.0.0",
+    "description": "An unofficial implementation for payloadcms supabase storage adapter",
+    "main": "./dist/src/index.js",
+    "types": "./dist/src/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsc"
+    },
+    "exports": {
+        ".": {
+            "import": "./dist/src/index.js",
+            "require": "./dist/src/index.cjs",
+            "types": "./dist/src/index.d.ts"
+        },
+        "./client": {
+            "import": "./dist/src/exports/client.js",
+            "require": "./dist/src/exports/client.cjs",
+            "types": "./dist/src/exports/client.d.ts"
+        }
+    },
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Troll321/unoff-payloadcms-supabase-storage-adapter.git"
+    },
+    "keywords": [
+        "supabase",
+        "storage",
+        "payloadcms",
+        "adapter",
+        "storage-adapter"
+    ],
+    "author": "Troll321",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Troll321/unoff-payloadcms-supabase-storage-adapter/issues"
+    },
+    "homepage": "https://github.com/Troll321/unoff-payloadcms-supabase-storage-adapter#readme",
+    "dependencies": {
+        "@payloadcms/plugin-cloud-storage": "workspace:*",
+        "@supabase/supabase-js": "^2.94.0"
+    },
+    "peerDependencies": {
+        "payload": "^3.74.0"
+    },
+    "devDependencies": {
+        "@types/node": "^25.2.0",
+        "payload": "^3.74.0",
+        "typescript": "^5.9.3"
+    },
+    "engines": {
+        "node": "^18.20.2 || >=20.9.0"
+    }
+}
