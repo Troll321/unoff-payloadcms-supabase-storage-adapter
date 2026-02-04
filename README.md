@@ -2,9 +2,13 @@
 
 This is basically a stripped down version from @payloadcms/storage-s3 that uses @supabase/supabase-js. This is created due to the frustation in setting up s3 for supabase :V
 
+### Installation
+
+`npm install unoff-payloadcms-supabase-storage-adapter`
+
 ### Working Example
 
-```
+```ts
 buildConfig({
 	...your payload config
 	plugins: [
@@ -31,7 +35,7 @@ buildConfig({
 
 ## Config Options
 
-```
+```ts
 export type SupabaseStorageOptions = {
 * Bucket name to upload files to.
 * Must follow [AWS S3 bucket naming conventions](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
