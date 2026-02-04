@@ -12,7 +12,7 @@ This is basically a stripped down version from @payloadcms/storage-s3 that uses 
 buildConfig({
 	...your payload config
 	plugins: [
-		supabaseStorage({
+	    supabaseStorage({
 			bucket:  process.env.SUPABASE_BUCKET!,
 			collections: {
 				files: { // <-- "files" is your upload collection name
