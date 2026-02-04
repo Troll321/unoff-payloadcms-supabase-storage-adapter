@@ -1,6 +1,6 @@
 {
     "name": "unoff-payloadcms-supabase-storage-adapter",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "An unofficial implementation for payloadcms supabase storage adapter",
     "main": "./dist/src/index.js",
     "types": "./dist/src/index.d.ts",
