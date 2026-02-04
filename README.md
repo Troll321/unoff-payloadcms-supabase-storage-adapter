@@ -1,65 +1,113 @@
+# The unofficial payloadcms storage adapter
+
+This is basically a stripped down version from @payloadcms/storage-s3 that uses @supabase/supabase-js. This is created due to the frustation in setting up s3 for supabase :V
+
+### Working Example
+
+```
+buildConfig({
+	...your payload config
+	plugins: [
+		supabaseStorage({
+			bucket:  process.env.SUPABASE_BUCKET!,
+			collections: {
+				files: { // <-- "files" is your upload collection name
+					disableLocalStorage:  true,
+					disablePayloadAccessControl:  true,
+					prefix:  "files",
+					signedDownloads:  true,
+				},
+			},
+			upsert:  true,
+			signedDownloads:  true,
+			config: {
+				baseUrl:  process.env.SUPABASE_BASE_URL!,
+				secret:  process.env.SUPABASE_SECRET!,
+			},
+			isPublic:  true // set this to true on public bucket
+		}),
+]})
+```
+
+## Config Options
+
+```
 export type SupabaseStorageOptions = {
-/**
-_ Bucket name to upload files to.
-_
-_ Must follow [AWS S3 bucket naming conventions](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
-_/
+* Bucket name to upload files to.
+* Must follow [AWS S3 bucket naming conventions](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
+*/
 bucket: string;
+
 /**
-_ When true will override existing file, else throw an error
-_ @default true
-_/
+* When true will override existing file, else throw an error
+* @default true
+*/
 upsert?: boolean;
-/\*\*
-_ Check to true if the bucket is public
-_ @default false
-_/
+
+/**
+* Check to true if the bucket is public
+* @default false
+*/
 isPublic: boolean;
+
 /**
-_ Collection options to apply the Supabase adapter to.
-_/
-collections: Partial<Record<UploadCollectionSlug, ({
-signedDownloads?: SignedDownloadsConfig;
-} & Omit<CollectionOptions, "adapter">) | true>>;
+* Collection options to apply the Supabase adapter to.
+*/
+collections: Partial<Record<UploadCollectionSlug,  ({signedDownloads?:  SignedDownloadsConfig;
+}  &  Omit<CollectionOptions,  "adapter">) | true>>;
+
 /**
-_ When enabled, fields (like the prefix field) will always be inserted into
-_ the collection schema regardless of whether the plugin is enabled. This
-_ ensures a consistent schema across all environments.
-_
-_ This will be enabled by default in Payload v4.
-_
-_ @default false
-_/
+* When enabled, fields (like the prefix field) will always be inserted into
+* the collection schema regardless of whether the plugin is enabled. This
+* ensures a consistent schema across all environments.
+*
+* This will be enabled by default in Payload v4.
+*
+* @default false
+*/
 alwaysInsertFields?: boolean;
+
 /**
-_ Optional cache key to identify the Supabase storage client instance.
-_ If not provided, a default key will be used. \*
-_ @default `supabase:containerName`
-_/
+* Optional cache key to identify the Supabase storage client instance.
+* If not provided, a default key will be used.
+*
+* @default `supabase:containerName`
+*/
 clientCacheKey?: string;
+
 /**
-_ Do uploads directly on the client to bypass limits on Vercel. You must allow CORS PUT method for the bucket to your website.
-_/
+* Do uploads directly on the client to bypass limits on Vercel. You must allow CORS PUT method for the bucket to your website.
+*/
 clientUploads?: ClientUploadsConfig;
+
 /**
-_ AWS Supabase client configuration. Highly dependent on your AWS setup.
-_
-\*/
+* Supabase client configuration.
+*/
 config: SupabaseStorageConfig;
+
 /**
-_ Whether or not to enable the plugin
-_
-_ Default: true
-_/
+* Whether or not to enable the plugin
+*
+* Default: true
+*/
 enabled?: boolean;
+
 /**
-_ Use pre-signed URLs for files downloading. Can be overriden per-collection.
-_/
+* Use pre-signed URLs for files downloading. Can be overriden per-collection.
+*/
 signedDownloads?: SignedDownloadsConfig;
+
 /**
-_ If true, on supabase it will be encoded but on Payload you could upload any filename you like
-_ If false, you are responsible for your own file name / prefix name
-_ @default true
-_/
+* If true, on supabase it will be base64url encoded but on Payload you could upload any filename you like
+* If false, you are responsible for your own file name / prefix name
+* @default true
+*/
 encodeName?: boolean;
+
 };
+```
+
+## NOTES!
+
+- clientUpload as for now is still error (it is presumed that the problem is on Payload)
+- Some feature from the original s3 storage might not exists here
