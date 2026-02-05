@@ -116,6 +116,7 @@ encodeName?: boolean;
 
 ## NOTES!
 
-- clientUpload as for now is still error (it is presumed that the problem is on Payload)
+- Currently **Sharp** and **crop / focalpoint** feature is **not supported**, don't use it (it will throw an error)
+- **clientUpload** as for now is still **error** (it is presumed that the problem is on Payload)
 - Some feature from the original s3 storage might not exists here
 - Oh yeah, beside the working example (it is untested :v)
