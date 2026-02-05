@@ -6,6 +6,8 @@ This is basically a stripped down version from @payloadcms/storage-s3 that uses 
 
 `npm install unoff-payloadcms-supabase-storage-adapter`
 
+Set your payload version to 3.74.0
+
 ### Working Example
 
 ```ts
