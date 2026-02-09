@@ -30,8 +30,8 @@ buildConfig({
 			upsert:  true,
 			signedDownloads:  true,
 			config: {
-				baseUrl:  process.env.SUPABASE_BASE_URL!,
-				secret:  process.env.SUPABASE_SECRET!,
+				baseUrl:  process.env.SUPABASE_BASE_URL!, // https://<projectName>.supabase.co
+				secret:  process.env.SUPABASE_SECRET!, // sb_secret_... Make sure this secret has permission
 			},
 			isPublic:  true // set this to true on public bucket
 		}),
